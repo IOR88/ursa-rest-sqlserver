@@ -20,7 +20,16 @@ class DimaccountFilterSet(FilterSet):
 
     class Meta:
         model = models.Dimaccount
-        fields =['dimaccount', 'factfinance', 'accountkey', 'parentaccountkey', 'accountcodealternatekey', 'parentaccountcodealternatekey', 'accountdescription', 'accounttype', 'operator', 'custommembers', 'valuetype', 'custommemberoptions']
+        fields =['accountkey',
+                 'parentaccountkey',
+                 'accountcodealternatekey',
+                 'parentaccountcodealternatekey',
+                 'accountdescription',
+                 'accounttype',
+                 'operator',
+                 'custommembers',
+                 'valuetype',
+                 'custommemberoptions']
 
 
 class DimcurrencyFilterSet(FilterSet):
@@ -55,7 +64,7 @@ class DimemployeeFilterSet(FilterSet):
 
     class Meta:
         model = models.Dimemployee
-        fields =['dimemployee', 'factresellersales', 'factsalesquota', 'employeekey', 'parentemployeekey', 'employeenationalidalternatekey', 'parentemployeenationalidalternatekey', 'salesterritorykey', 'firstname', 'lastname', 'middlename', 'namestyle', 'title', 'hiredate', 'birthdate', 'loginid', 'emailaddress', 'phone', 'maritalstatus', 'emergencycontactname', 'emergencycontactphone', 'salariedflag', 'gender', 'payfrequency', 'baserate', 'vacationhours', 'sickleavehours', 'currentflag', 'salespersonflag', 'departmentname', 'startdate', 'enddate', 'status', 'employeephoto']
+        fields =['dimemployee', 'factresellersales', 'factsalesquota', 'employeekey', 'parentemployeekey', 'employeenationalidalternatekey', 'parentemployeenationalidalternatekey', 'salesterritorykey', 'firstname', 'lastname', 'middlename', 'namestyle', 'title', 'hiredate', 'birthdate', 'loginid', 'emailaddress', 'phone', 'maritalstatus', 'emergencycontactname', 'emergencycontactphone', 'salariedflag', 'gender', 'payfrequency', 'baserate', 'vacationhours', 'sickleavehours', 'currentflag', 'salespersonflag', 'departmentname', 'startdate', 'enddate', 'status']
 
 
 class DimgeographyFilterSet(FilterSet):
@@ -76,7 +85,7 @@ class DimproductFilterSet(FilterSet):
 
     class Meta:
         model = models.Dimproduct
-        fields =['factinternetsales', 'factproductinventory', 'factresellersales', 'productkey', 'productalternatekey', 'productsubcategorykey', 'weightunitmeasurecode', 'sizeunitmeasurecode', 'englishproductname', 'spanishproductname', 'frenchproductname', 'standardcost', 'finishedgoodsflag', 'color', 'safetystocklevel', 'reorderpoint', 'listprice', 'size', 'sizerange', 'weight', 'daystomanufacture', 'productline', 'dealerprice', 'class_field', 'style', 'modelname', 'largephoto', 'englishdescription', 'frenchdescription', 'chinesedescription', 'arabicdescription', 'hebrewdescription', 'thaidescription', 'germandescription', 'japanesedescription', 'turkishdescription', 'startdate', 'enddate', 'status']
+        fields =['factinternetsales', 'factproductinventory', 'factresellersales', 'productkey', 'productalternatekey', 'productsubcategorykey', 'weightunitmeasurecode', 'sizeunitmeasurecode', 'englishproductname', 'spanishproductname', 'frenchproductname', 'standardcost', 'finishedgoodsflag', 'color', 'safetystocklevel', 'reorderpoint', 'listprice', 'size', 'sizerange', 'weight', 'daystomanufacture', 'productline', 'dealerprice', 'class_field', 'style', 'modelname', 'englishdescription', 'frenchdescription', 'chinesedescription', 'arabicdescription', 'hebrewdescription', 'thaidescription', 'germandescription', 'japanesedescription', 'turkishdescription', 'startdate', 'enddate', 'status']
 
 
 class DimproductcategoryFilterSet(FilterSet):
@@ -118,7 +127,7 @@ class DimsalesterritoryFilterSet(FilterSet):
 
     class Meta:
         model = models.Dimsalesterritory
-        fields =['dimemployee', 'dimgeography', 'factinternetsales', 'factresellersales', 'salesterritorykey', 'salesterritoryalternatekey', 'salesterritoryregion', 'salesterritorycountry', 'salesterritorygroup', 'salesterritoryimage']
+        fields =['dimemployee', 'dimgeography', 'factinternetsales', 'factresellersales', 'salesterritorykey', 'salesterritoryalternatekey', 'salesterritoryregion', 'salesterritorycountry', 'salesterritorygroup']
 
 
 class DimscenarioFilterSet(FilterSet):
@@ -209,4 +218,4 @@ class SysdiagramsFilterSet(FilterSet):
 
     class Meta:
         model = models.Sysdiagrams
-        fields =['name', 'principal_id', 'diagram_id', 'version', 'definition']
+        fields =['name', 'principal_id', 'diagram_id', 'version']

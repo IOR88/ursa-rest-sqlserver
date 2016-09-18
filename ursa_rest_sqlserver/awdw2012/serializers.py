@@ -22,8 +22,17 @@ class DimaccountSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = models.Dimaccount
-        fields = '__all__'
-        # fields =('dimaccount', 'factfinance', 'accountkey', 'parentaccountkey', 'accountcodealternatekey', 'parentaccountcodealternatekey', 'accountdescription', 'accounttype', 'operator', 'custommembers', 'valuetype', 'custommemberoptions')
+        #fields = '__all__'
+        fields =('accountkey',
+                 'parentaccountkey',
+                 'accountcodealternatekey',
+                 'parentaccountcodealternatekey',
+                 'accountdescription',
+                 'accounttype',
+                 'operator',
+                 'custommembers',
+                 'valuetype',
+                 'custommemberoptions')
 
 
 class DimcurrencySerializer(HyperlinkedModelSerializer):
