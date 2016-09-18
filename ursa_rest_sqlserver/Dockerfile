@@ -7,8 +7,6 @@ RUN apt-get update && apt-get install -y \
     tdsodbc \
     python-pip
 
-
-
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
 WORKDIR /code
