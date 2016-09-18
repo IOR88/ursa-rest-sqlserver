@@ -20,7 +20,7 @@ class Adventureworksdwbuildversion(models.Model):
 
 
 class Databaselog(models.Model):
-    databaselogid = models.AutoField(db_column='DatabaseLogID')  # Field name made lowercase.
+    databaselogid = models.IntegerField(db_column='DatabaseLogID')  # Field name made lowercase.
     posttime = models.DateTimeField(db_column='PostTime')  # Field name made lowercase.
     databaseuser = models.CharField(db_column='DatabaseUser', max_length=128)  # Field name made lowercase.
     event = models.CharField(db_column='Event', max_length=128)  # Field name made lowercase.
@@ -31,11 +31,11 @@ class Databaselog(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'DatabaseLog'
+        db_table = '[dbo].[DatabaseLog]'
 
 
 class Dimaccount(models.Model):
-    accountkey = models.AutoField(db_column='AccountKey', primary_key=True)  # Field name made lowercase.
+    accountkey = models.IntegerField(db_column='AccountKey', primary_key=True)  # Field name made lowercase.
     parentaccountkey = models.ForeignKey('self', models.DO_NOTHING, db_column='ParentAccountKey', blank=True, null=True)  # Field name made lowercase.
     accountcodealternatekey = models.IntegerField(db_column='AccountCodeAlternateKey', blank=True, null=True)  # Field name made lowercase.
     parentaccountcodealternatekey = models.IntegerField(db_column='ParentAccountCodeAlternateKey', blank=True, null=True)  # Field name made lowercase.
@@ -52,7 +52,7 @@ class Dimaccount(models.Model):
 
 
 class Dimcurrency(models.Model):
-    currencykey = models.AutoField(db_column='CurrencyKey', primary_key=True)  # Field name made lowercase.
+    currencykey = models.IntegerField(db_column='CurrencyKey', primary_key=True)  # Field name made lowercase.
     currencyalternatekey = models.CharField(db_column='CurrencyAlternateKey', unique=True, max_length=3)  # Field name made lowercase.
     currencyname = models.CharField(db_column='CurrencyName', max_length=50)  # Field name made lowercase.
 
@@ -62,7 +62,7 @@ class Dimcurrency(models.Model):
 
 
 class Dimcustomer(models.Model):
-    customerkey = models.AutoField(db_column='CustomerKey', primary_key=True)  # Field name made lowercase.
+    customerkey = models.IntegerField(db_column='CustomerKey', primary_key=True)  # Field name made lowercase.
     geographykey = models.ForeignKey('Dimgeography', models.DO_NOTHING, db_column='GeographyKey', blank=True, null=True)  # Field name made lowercase.
     customeralternatekey = models.CharField(db_column='CustomerAlternateKey', unique=True, max_length=15)  # Field name made lowercase.
     title = models.CharField(db_column='Title', max_length=8, blank=True, null=True)  # Field name made lowercase.
@@ -124,7 +124,7 @@ class Dimdate(models.Model):
 
 
 class Dimdepartmentgroup(models.Model):
-    departmentgroupkey = models.AutoField(db_column='DepartmentGroupKey', primary_key=True)  # Field name made lowercase.
+    departmentgroupkey = models.IntegerField(db_column='DepartmentGroupKey', primary_key=True)  # Field name made lowercase.
     parentdepartmentgroupkey = models.ForeignKey('self', models.DO_NOTHING, db_column='ParentDepartmentGroupKey', blank=True, null=True)  # Field name made lowercase.
     departmentgroupname = models.CharField(db_column='DepartmentGroupName', max_length=50, blank=True, null=True)  # Field name made lowercase.
 
@@ -134,7 +134,7 @@ class Dimdepartmentgroup(models.Model):
 
 
 class Dimemployee(models.Model):
-    employeekey = models.AutoField(db_column='EmployeeKey', primary_key=True)  # Field name made lowercase.
+    employeekey = models.IntegerField(db_column='EmployeeKey', primary_key=True)  # Field name made lowercase.
     parentemployeekey = models.ForeignKey('self', models.DO_NOTHING, db_column='ParentEmployeeKey', blank=True, null=True)  # Field name made lowercase.
     employeenationalidalternatekey = models.CharField(db_column='EmployeeNationalIDAlternateKey', max_length=15, blank=True, null=True)  # Field name made lowercase.
     parentemployeenationalidalternatekey = models.CharField(db_column='ParentEmployeeNationalIDAlternateKey', max_length=15, blank=True, null=True)  # Field name made lowercase.
@@ -172,7 +172,7 @@ class Dimemployee(models.Model):
 
 
 class Dimgeography(models.Model):
-    geographykey = models.AutoField(db_column='GeographyKey', primary_key=True)  # Field name made lowercase.
+    geographykey = models.IntegerField(db_column='GeographyKey', primary_key=True)  # Field name made lowercase.
     city = models.CharField(db_column='City', max_length=30, blank=True, null=True)  # Field name made lowercase.
     stateprovincecode = models.CharField(db_column='StateProvinceCode', max_length=3, blank=True, null=True)  # Field name made lowercase.
     stateprovincename = models.CharField(db_column='StateProvinceName', max_length=50, blank=True, null=True)  # Field name made lowercase.
@@ -190,7 +190,7 @@ class Dimgeography(models.Model):
 
 
 class Dimorganization(models.Model):
-    organizationkey = models.AutoField(db_column='OrganizationKey', primary_key=True)  # Field name made lowercase.
+    organizationkey = models.IntegerField(db_column='OrganizationKey', primary_key=True)  # Field name made lowercase.
     parentorganizationkey = models.ForeignKey('self', models.DO_NOTHING, db_column='ParentOrganizationKey', blank=True, null=True)  # Field name made lowercase.
     percentageofownership = models.CharField(db_column='PercentageOfOwnership', max_length=16, blank=True, null=True)  # Field name made lowercase.
     organizationname = models.CharField(db_column='OrganizationName', max_length=50, blank=True, null=True)  # Field name made lowercase.
@@ -202,7 +202,7 @@ class Dimorganization(models.Model):
 
 
 class Dimproduct(models.Model):
-    productkey = models.AutoField(db_column='ProductKey', primary_key=True)  # Field name made lowercase.
+    productkey = models.IntegerField(db_column='ProductKey', primary_key=True)  # Field name made lowercase.
     productalternatekey = models.CharField(db_column='ProductAlternateKey', max_length=25, blank=True, null=True)  # Field name made lowercase.
     productsubcategorykey = models.ForeignKey('Dimproductsubcategory', models.DO_NOTHING, db_column='ProductSubcategoryKey', blank=True, null=True)  # Field name made lowercase.
     weightunitmeasurecode = models.CharField(db_column='WeightUnitMeasureCode', max_length=3, blank=True, null=True)  # Field name made lowercase.
@@ -246,7 +246,7 @@ class Dimproduct(models.Model):
 
 
 class Dimproductcategory(models.Model):
-    productcategorykey = models.AutoField(db_column='ProductCategoryKey', primary_key=True)  # Field name made lowercase.
+    productcategorykey = models.IntegerField(db_column='ProductCategoryKey', primary_key=True)  # Field name made lowercase.
     productcategoryalternatekey = models.IntegerField(db_column='ProductCategoryAlternateKey', unique=True, blank=True, null=True)  # Field name made lowercase.
     englishproductcategoryname = models.CharField(db_column='EnglishProductCategoryName', max_length=50)  # Field name made lowercase.
     spanishproductcategoryname = models.CharField(db_column='SpanishProductCategoryName', max_length=50)  # Field name made lowercase.
@@ -258,7 +258,7 @@ class Dimproductcategory(models.Model):
 
 
 class Dimproductsubcategory(models.Model):
-    productsubcategorykey = models.AutoField(db_column='ProductSubcategoryKey', primary_key=True)  # Field name made lowercase.
+    productsubcategorykey = models.IntegerField(db_column='ProductSubcategoryKey', primary_key=True)  # Field name made lowercase.
     productsubcategoryalternatekey = models.IntegerField(db_column='ProductSubcategoryAlternateKey', unique=True, blank=True, null=True)  # Field name made lowercase.
     englishproductsubcategoryname = models.CharField(db_column='EnglishProductSubcategoryName', max_length=50)  # Field name made lowercase.
     spanishproductsubcategoryname = models.CharField(db_column='SpanishProductSubcategoryName', max_length=50)  # Field name made lowercase.
@@ -271,7 +271,7 @@ class Dimproductsubcategory(models.Model):
 
 
 class Dimpromotion(models.Model):
-    promotionkey = models.AutoField(db_column='PromotionKey', primary_key=True)  # Field name made lowercase.
+    promotionkey = models.IntegerField(db_column='PromotionKey', primary_key=True)  # Field name made lowercase.
     promotionalternatekey = models.IntegerField(db_column='PromotionAlternateKey', unique=True, blank=True, null=True)  # Field name made lowercase.
     englishpromotionname = models.CharField(db_column='EnglishPromotionName', max_length=255, blank=True, null=True)  # Field name made lowercase.
     spanishpromotionname = models.CharField(db_column='SpanishPromotionName', max_length=255, blank=True, null=True)  # Field name made lowercase.
@@ -294,7 +294,7 @@ class Dimpromotion(models.Model):
 
 
 class Dimreseller(models.Model):
-    resellerkey = models.AutoField(db_column='ResellerKey', primary_key=True)  # Field name made lowercase.
+    resellerkey = models.IntegerField(db_column='ResellerKey', primary_key=True)  # Field name made lowercase.
     geographykey = models.ForeignKey(Dimgeography, models.DO_NOTHING, db_column='GeographyKey', blank=True, null=True)  # Field name made lowercase.
     reselleralternatekey = models.CharField(db_column='ResellerAlternateKey', unique=True, max_length=15, blank=True, null=True)  # Field name made lowercase.
     phone = models.CharField(db_column='Phone', max_length=25, blank=True, null=True)  # Field name made lowercase.
@@ -321,7 +321,7 @@ class Dimreseller(models.Model):
 
 
 class Dimsalesreason(models.Model):
-    salesreasonkey = models.AutoField(db_column='SalesReasonKey', primary_key=True)  # Field name made lowercase.
+    salesreasonkey = models.IntegerField(db_column='SalesReasonKey', primary_key=True)  # Field name made lowercase.
     salesreasonalternatekey = models.IntegerField(db_column='SalesReasonAlternateKey')  # Field name made lowercase.
     salesreasonname = models.CharField(db_column='SalesReasonName', max_length=50)  # Field name made lowercase.
     salesreasonreasontype = models.CharField(db_column='SalesReasonReasonType', max_length=50)  # Field name made lowercase.
@@ -332,7 +332,7 @@ class Dimsalesreason(models.Model):
 
 
 class Dimsalesterritory(models.Model):
-    salesterritorykey = models.AutoField(db_column='SalesTerritoryKey', primary_key=True)  # Field name made lowercase.
+    salesterritorykey = models.IntegerField(db_column='SalesTerritoryKey', primary_key=True)  # Field name made lowercase.
     salesterritoryalternatekey = models.IntegerField(db_column='SalesTerritoryAlternateKey', unique=True, blank=True, null=True)  # Field name made lowercase.
     salesterritoryregion = models.CharField(db_column='SalesTerritoryRegion', max_length=50)  # Field name made lowercase.
     salesterritorycountry = models.CharField(db_column='SalesTerritoryCountry', max_length=50)  # Field name made lowercase.
@@ -345,7 +345,7 @@ class Dimsalesterritory(models.Model):
 
 
 class Dimscenario(models.Model):
-    scenariokey = models.AutoField(db_column='ScenarioKey', primary_key=True)  # Field name made lowercase.
+    scenariokey = models.IntegerField(db_column='ScenarioKey', primary_key=True)  # Field name made lowercase.
     scenarioname = models.CharField(db_column='ScenarioName', max_length=50, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
@@ -365,7 +365,7 @@ class Factadditionalinternationalproductdescription(models.Model):
 
 
 class Factcallcenter(models.Model):
-    factcallcenterid = models.AutoField(db_column='FactCallCenterID', primary_key=True)  # Field name made lowercase.
+    factcallcenterid = models.IntegerField(db_column='FactCallCenterID', primary_key=True)  # Field name made lowercase.
     datekey = models.ForeignKey(Dimdate, models.DO_NOTHING, db_column='DateKey')  # Field name made lowercase.
     wagetype = models.CharField(db_column='WageType', max_length=15)  # Field name made lowercase.
     shift = models.CharField(db_column='Shift', max_length=20)  # Field name made lowercase.
@@ -400,7 +400,7 @@ class Factcurrencyrate(models.Model):
 
 
 class Factfinance(models.Model):
-    financekey = models.AutoField(db_column='FinanceKey')  # Field name made lowercase.
+    financekey = models.IntegerField(db_column='FinanceKey')  # Field name made lowercase.
     datekey = models.ForeignKey(Dimdate, models.DO_NOTHING, db_column='DateKey')  # Field name made lowercase.
     organizationkey = models.ForeignKey(Dimorganization, models.DO_NOTHING, db_column='OrganizationKey')  # Field name made lowercase.
     departmentgroupkey = models.ForeignKey(Dimdepartmentgroup, models.DO_NOTHING, db_column='DepartmentGroupKey')  # Field name made lowercase.
@@ -416,9 +416,9 @@ class Factfinance(models.Model):
 
 class Factinternetsales(models.Model):
     productkey = models.ForeignKey(Dimproduct, models.DO_NOTHING, db_column='ProductKey')  # Field name made lowercase.
-    orderdatekey = models.ForeignKey(Dimdate, models.DO_NOTHING, db_column='OrderDateKey')  # Field name made lowercase.
-    duedatekey = models.ForeignKey(Dimdate, models.DO_NOTHING, db_column='DueDateKey')  # Field name made lowercase.
-    shipdatekey = models.ForeignKey(Dimdate, models.DO_NOTHING, db_column='ShipDateKey')  # Field name made lowercase.
+    orderdatekey = models.ForeignKey(Dimdate, models.DO_NOTHING, db_column='OrderDateKey', related_name="fis_by_orderdatekey",)  # Field name made lowercase.
+    duedatekey = models.ForeignKey(Dimdate, models.DO_NOTHING, db_column='DueDateKey', related_name="fis_by_duedatekey",)  # Field name made lowercase.
+    shipdatekey = models.ForeignKey(Dimdate, models.DO_NOTHING, db_column='ShipDateKey', related_name="fis_by_shipdatekey",)  # Field name made lowercase.
     customerkey = models.ForeignKey(Dimcustomer, models.DO_NOTHING, db_column='CustomerKey')  # Field name made lowercase.
     promotionkey = models.ForeignKey(Dimpromotion, models.DO_NOTHING, db_column='PromotionKey')  # Field name made lowercase.
     currencykey = models.ForeignKey(Dimcurrency, models.DO_NOTHING, db_column='CurrencyKey')  # Field name made lowercase.
@@ -449,8 +449,8 @@ class Factinternetsales(models.Model):
 
 
 class Factinternetsalesreason(models.Model):
-    salesordernumber = models.ForeignKey(Factinternetsales, models.DO_NOTHING, db_column='SalesOrderNumber')  # Field name made lowercase.
-    salesorderlinenumber = models.ForeignKey(Factinternetsales, models.DO_NOTHING, db_column='SalesOrderLineNumber')  # Field name made lowercase.
+    salesordernumber = models.ForeignKey(Factinternetsales, models.DO_NOTHING, db_column='SalesOrderNumber', related_name='fisr_by_salesordernumber')  # Field name made lowercase.
+    salesorderlinenumber = models.ForeignKey(Factinternetsales, models.DO_NOTHING, db_column='SalesOrderLineNumber', related_name='fisr_by_salesorderlinenumber')  # Field name made lowercase.
     salesreasonkey = models.ForeignKey(Dimsalesreason, models.DO_NOTHING, db_column='SalesReasonKey')  # Field name made lowercase.
 
     class Meta:
@@ -476,9 +476,9 @@ class Factproductinventory(models.Model):
 
 class Factresellersales(models.Model):
     productkey = models.ForeignKey(Dimproduct, models.DO_NOTHING, db_column='ProductKey')  # Field name made lowercase.
-    orderdatekey = models.ForeignKey(Dimdate, models.DO_NOTHING, db_column='OrderDateKey')  # Field name made lowercase.
-    duedatekey = models.ForeignKey(Dimdate, models.DO_NOTHING, db_column='DueDateKey')  # Field name made lowercase.
-    shipdatekey = models.ForeignKey(Dimdate, models.DO_NOTHING, db_column='ShipDateKey')  # Field name made lowercase.
+    orderdatekey = models.ForeignKey(Dimdate, models.DO_NOTHING, db_column='OrderDateKey', related_name='frs_by_orderdatekey')  # Field name made lowercase.
+    duedatekey = models.ForeignKey(Dimdate, models.DO_NOTHING, db_column='DueDateKey', related_name='frs_by_duedatekey')  # Field name made lowercase.
+    shipdatekey = models.ForeignKey(Dimdate, models.DO_NOTHING, db_column='ShipDateKey', related_name='frs_by_shipdatekey')  # Field name made lowercase.
     resellerkey = models.ForeignKey(Dimreseller, models.DO_NOTHING, db_column='ResellerKey')  # Field name made lowercase.
     employeekey = models.ForeignKey(Dimemployee, models.DO_NOTHING, db_column='EmployeeKey')  # Field name made lowercase.
     promotionkey = models.ForeignKey(Dimpromotion, models.DO_NOTHING, db_column='PromotionKey')  # Field name made lowercase.
@@ -510,7 +510,7 @@ class Factresellersales(models.Model):
 
 
 class Factsalesquota(models.Model):
-    salesquotakey = models.AutoField(db_column='SalesQuotaKey', primary_key=True)  # Field name made lowercase.
+    salesquotakey = models.IntegerField(db_column='SalesQuotaKey', primary_key=True)  # Field name made lowercase.
     employeekey = models.ForeignKey(Dimemployee, models.DO_NOTHING, db_column='EmployeeKey')  # Field name made lowercase.
     datekey = models.ForeignKey(Dimdate, models.DO_NOTHING, db_column='DateKey')  # Field name made lowercase.
     calendaryear = models.SmallIntegerField(db_column='CalendarYear')  # Field name made lowercase.
@@ -524,7 +524,7 @@ class Factsalesquota(models.Model):
 
 
 class Factsurveyresponse(models.Model):
-    surveyresponsekey = models.AutoField(db_column='SurveyResponseKey', primary_key=True)  # Field name made lowercase.
+    surveyresponsekey = models.IntegerField(db_column='SurveyResponseKey', primary_key=True)  # Field name made lowercase.
     datekey = models.ForeignKey(Dimdate, models.DO_NOTHING, db_column='DateKey')  # Field name made lowercase.
     customerkey = models.ForeignKey(Dimcustomer, models.DO_NOTHING, db_column='CustomerKey')  # Field name made lowercase.
     productcategorykey = models.IntegerField(db_column='ProductCategoryKey')  # Field name made lowercase.
@@ -539,7 +539,7 @@ class Factsurveyresponse(models.Model):
 
 
 class Prospectivebuyer(models.Model):
-    prospectivebuyerkey = models.AutoField(db_column='ProspectiveBuyerKey', primary_key=True)  # Field name made lowercase.
+    prospectivebuyerkey = models.IntegerField(db_column='ProspectiveBuyerKey', primary_key=True)  # Field name made lowercase.
     prospectalternatekey = models.CharField(db_column='ProspectAlternateKey', max_length=15, blank=True, null=True)  # Field name made lowercase.
     firstname = models.CharField(db_column='FirstName', max_length=50, blank=True, null=True)  # Field name made lowercase.
     middlename = models.CharField(db_column='MiddleName', max_length=50, blank=True, null=True)  # Field name made lowercase.
@@ -572,7 +572,7 @@ class Prospectivebuyer(models.Model):
 class Sysdiagrams(models.Model):
     name = models.CharField(max_length=128)
     principal_id = models.IntegerField()
-    diagram_id = models.AutoField(primary_key=True)
+    diagram_id = models.IntegerField(primary_key=True)
     version = models.IntegerField(blank=True, null=True)
     definition = models.BinaryField(blank=True, null=True)
 
