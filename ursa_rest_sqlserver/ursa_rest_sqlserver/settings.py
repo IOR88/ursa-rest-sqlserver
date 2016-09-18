@@ -82,8 +82,18 @@ WSGI_APPLICATION = 'ursa_rest_sqlserver.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'ursadb',
+        'USER': 'reader',
+        'PASSWORD': 'alaska',
+        'HOST': '192.168.8.107\SEASIDE',
+        'OPTIONS': {
+            'driver': 'FreeTDS',
+            'host_is_server': True,
+            'autocommit': True,
+            'unicode_results': True,
+            'extra_params': 'tds_version=8.0'
+        }
     }
 }
 
