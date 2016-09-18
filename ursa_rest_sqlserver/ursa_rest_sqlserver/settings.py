@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'ursadb',
         'USER': 'reader',
         'PASSWORD': 'alaska',
-        'HOST': '192.168.8.107\SEASIDE',
+        'HOST': '192.168.8.102\SEASIDE',
         'OPTIONS': {
             'driver': 'FreeTDS',
             'host_is_server': True,
