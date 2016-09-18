@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_filters',
     # apps
     'core',
+    'awdw2012',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,21 @@ WSGI_APPLICATION = 'ursa_rest_sqlserver.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'ursadb',
+        'NAME': 'ursadb',   # Django database
+        'USER': 'reader',
+        'PASSWORD': 'alaska',
+        'HOST': '192.168.8.102\SEASIDE',    # SQL Server IP address / SQL Server named instance
+        'OPTIONS': {
+            'driver': 'FreeTDS',
+            'host_is_server': True,
+            'autocommit': True,
+            'unicode_results': True,
+            'extra_params': 'tds_version=8.0'
+        }
+    },
+    'apidb': {
+        'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'AdventureWorksDW2012',
         'USER': 'reader',
         'PASSWORD': 'alaska',
         'HOST': '192.168.8.102\SEASIDE',
@@ -94,9 +109,11 @@ DATABASES = {
             'unicode_results': True,
             'extra_params': 'tds_version=8.0'
         }
-    }
+    },
 }
 
+# to rout rest api to proper database
+DATABASE_ROUTERS = ['awdw2012.routers.AppRouter',]
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
